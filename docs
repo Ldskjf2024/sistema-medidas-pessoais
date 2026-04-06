@@ -1,1 +1,42 @@
+Nome do Projeto - Sistema de Medidas Pessoais
 
+Objetivo - Desenvolver um sistema que permita ao usuário cadastrar suas medidas corporais e gerar um código único para compartilhar com lojas online.
+
+Funcionalidades -
+Cadastro de usuário
+Login no sistema
+Cadastro de medidas corporais
+Armazenamento no banco de dados
+Geração de código único
+Consulta de medidas via API
+Exclusão de conta
+
+Tecnologias Utilizadas -
+Frontend: HTML, CSS, JavaScript
+Backend: Node.js com Express
+Banco de dados: MySQL
+Comunicação: API REST
+
+Fluxo do Sistema -
+Cria conta
+Faz login
+Preenche suas medidas
+Sistema salva no banco
+Gera código único
+Código pode ser usado por lojas para consultar medidas
+
+API - 
+Buscar medidas por código
+Exemplo: http://localhost:3000/medidas/codigo/SEUCODIGO
+
+Regras de Negócio -
+Email deve conter “@”
+Senha mínima de 6 caracteres
+Medidas devem ser numéricas
+Código é único por usuário
+
+O sistema permite que o usuário - 
+Cadastre seus dados
+Armazene medidas
+Compartilhe código
+Exclua sua conta
