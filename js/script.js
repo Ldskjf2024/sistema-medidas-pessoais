@@ -1,6 +1,4 @@
 const API = "http://localhost:3000";
-
-// CADASTRO
 function cadastrar() {
 
 if (!email.value.includes("@")) {
@@ -31,7 +29,6 @@ if (senha.value.length < 6) {
     }
 });
 }
-// LOGIN
 function login() {
     fetch(API + "/login", {
         method: "POST",
@@ -52,11 +49,7 @@ function login() {
         }
     });
 }
-
-// IR PARA SALVAR
 function irParaSalvar() {
-
-    // salva no localStorage antes de ir
     localStorage.setItem("busto", busto.value);
     localStorage.setItem("torax", torax.value);
     localStorage.setItem("cintura", cintura.value);
@@ -66,8 +59,6 @@ function irParaSalvar() {
 
     window.location.href = "salvarMedidas.html";
 }
-
-// SALVAR MEDIDAS
 function salvarMedidas() {
     if (
     !busto.value ||
@@ -112,10 +103,8 @@ if (
     });
 }
 
-// 🔥 CARREGAR MEDIDAS DO BANCO
 function carregarMedidasUsuario() {
 
-    // primeiro tenta localStorage
     busto.value = localStorage.getItem("busto") || "";
     torax.value = localStorage.getItem("torax") || "";
     cintura.value = localStorage.getItem("cintura") || "";
@@ -123,7 +112,6 @@ function carregarMedidasUsuario() {
     coxa.value = localStorage.getItem("coxa") || "";
     calcado.value = localStorage.getItem("calcado") || "";
 
-    // depois banco (sobrescreve se existir)
     const id = localStorage.getItem("usuario_id");
 
     fetch(API + "/medidas/" + id)
@@ -141,7 +129,7 @@ function carregarMedidasUsuario() {
         }
     });
 }
-// MOSTRAR CÓDIGO
+
 function mostrarCodigo() {
     document.getElementById("codigo").innerText =
         localStorage.getItem("codigo");

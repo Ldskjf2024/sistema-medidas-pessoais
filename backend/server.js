@@ -6,12 +6,11 @@ const app = express();
 app.use(cors({ origin: "*" }));
 app.use(express.json());
 
-// TESTE
+
 app.get("/", (req, res) => {
     res.send("API funcionando");
 });
 
-// CADASTRO
 app.post("/usuario", (req, res) => {
     const { nome, email, senha } = req.body;
 
@@ -26,8 +25,6 @@ app.post("/usuario", (req, res) => {
     if (senha.length < 6) {
         return res.json({ mensagem: "Senha deve ter no mínimo 6 caracteres" });
     }
-
-    // 🔥 VERIFICA SE JÁ EXISTE
     db.query("SELECT * FROM usuarios WHERE email = ?", [email], (err, result) => {
         if (result.length > 0) {
             return res.json({ mensagem: "Email já cadastrado" });
@@ -43,7 +40,6 @@ app.post("/usuario", (req, res) => {
     });
 });
 
-// LOGIN
 app.post("/login", (req, res) => {
     const { email, senha } = req.body;
 
@@ -58,7 +54,6 @@ app.post("/login", (req, res) => {
     });
 });
 
-// SALVAR MEDIDAS
 app.post("/medidas", (req, res) => {
     const { usuario_id, busto, torax, cintura, quadril, coxa, calcado } = req.body;
 
@@ -74,7 +69,6 @@ app.post("/medidas", (req, res) => {
     });
 });
 
-// 🔥 BUSCAR MEDIDAS DO USUÁRIO
 app.get("/medidas/:id", (req, res) => {
     const id = req.params.id;
 
@@ -90,7 +84,6 @@ app.get("/medidas/:id", (req, res) => {
     });
 });
 
-// 🔥 BUSCAR MEDIDAS POR CÓDIGO
 app.get("/medidas/codigo/:codigo", (req, res) => {
     const sql = `
     SELECT m.* FROM medidas m
